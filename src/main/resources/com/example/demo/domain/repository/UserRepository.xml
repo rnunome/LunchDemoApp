@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.domain.repository.UserRepository">
+  <resultMap type="com.example.demo.domain.model.User" id="user">
+	<id column="id" property="id"></id>
+	<result column="name" property="name"></result>
+	<result column="password" property="password"></result>
+	<result column="created_at" property="created_at"></result>
+	<result column="updated_at" property="updated_at"></result>
+	<result column="deleteflag" property="deleteflag"></result>
+	<result column="admin_flag" property="admin_flag"></result>
+	<result column="deleted_at" property="deleted_at"></result>
+  </resultMap>
+
+  <select id="findById" resultMap="user">
+    SELECT * FROM users WHERE name = #{name} AND deleteflag = 0
+  </select>
+
+</mapper>
